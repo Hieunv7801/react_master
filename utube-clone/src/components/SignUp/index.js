@@ -34,6 +34,7 @@ const SignUp = () => {
           if (response.data.success === true) {
             navigate("/login");
           }
+          console.log(result);
         })
         .catch((error) => {
           console.log(error);

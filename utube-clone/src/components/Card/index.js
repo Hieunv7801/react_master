@@ -3,10 +3,14 @@ import { Link } from "react-router-dom";
 
 export default function Card({ video }) {
   return (
-    <div className="w-64 h-60 flex gap-3 flex-col">
+    <div className="w-[350px] h-[200px] flex gap-3 flex-col mb-16">
       <div className="">
-        <Link to="">
-          <img src={video.thumbnail} className="h-44 w-72" alt="thumbnail" />
+        <Link to={`/watch/${video.vid}`}>
+          <img
+            src={video.thumbnail}
+            className="h-[200px] w-[340px]"
+            alt="thumbnail"
+          />
         </Link>
       </div>
       <div className="relative"></div>

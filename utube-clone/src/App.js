@@ -5,6 +5,7 @@ import Home from "./components/Home";
 import SignUp from "./components/SignUp";
 import ErrorPage from "./components/Error";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Watch from "./components/Watch";
 function App() {
   return (
     <Routes>
@@ -14,6 +15,7 @@ function App() {
       <Route element={<PrivateRoutes />}>
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/watch/:id" element={<Watch />} />
       </Route>
     </Routes>
   );

@@ -1,12 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import { AiOutlineSearch, AiOutlineClose } from "react-icons/ai";
 import { TiMicrophone } from "react-icons/ti";
 import { BsYoutube, BsCameraVideo, BsBell } from "react-icons/bs";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoAppsSharp } from "react-icons/io5";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import AuthContext from "../../store/AuthContext";
 
 export default function NavBar() {
+  const { logout } = useContext(AuthContext);
+  const logoutHandler = () => {
+    logout();
+  };
   return (
     <div className="flex justify-between items-center px-14 h-14 bg-[#212121] opacity-95 top-0 z-50 fixed w-full">
       <div className="flex gap-8 items-center text-2xl">
@@ -52,6 +57,12 @@ export default function NavBar() {
             9+
           </span>
         </div>
+        <button
+          className="w-20 h-10 border rounded-lg bg-red-600"
+          onClick={logoutHandler}
+        >
+          Logout
+        </button>
       </div>
     </div>
   );

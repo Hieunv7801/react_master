@@ -6,14 +6,11 @@ import SideBar from "../SideBar";
 import axios from "axios";
 import InfiniteScroll from "react-infinite-scroll-component";
 const Home = (props) => {
-  const { logout } = useContext(AuthContext);
   const [videos, setVideos] = useState([]);
   const [page, setPage] = useState(1);
   const [totalItems, setTotalItems] = useState(0);
   const [hasMore, setHasMore] = useState(true);
-  const logoutHandler = () => {
-    logout();
-  };
+
   const getData = () => {
     axios
       .get("http://localhost:5001/api/videos", {
@@ -38,6 +35,7 @@ const Home = (props) => {
   };
 
   useEffect(() => getData(), []);
+
   const fetchProducts = async () => {
     if (videos.length >= totalItems) {
       setHasMore(false);
@@ -59,9 +57,9 @@ const Home = (props) => {
           loader={<h4>Loading...</h4>} // Hiển thị thông báo loading
           endMessage={<p>No more videos</p>} // Thông báo hết sản phẩm
         >
-          <div className="grid gap-y-14 gap-x-8 grid-cols-4 p-8 ml-60">
+          <div className="grid gap-y-14 gap-x-8 grid-cols-4 p-8 ml-[300px]">
             {videos.map((video) => (
-              <Card key={video.name} video={video} />
+              <Card key={video.id} video={video} />
             ))}
           </div>
         </InfiniteScroll>
